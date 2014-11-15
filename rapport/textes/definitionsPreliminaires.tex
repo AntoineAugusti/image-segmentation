@@ -20,3 +20,19 @@ Afin d'étudier dans de bonnes conditions notre article scientifique, il est né
 	
 	\subsubsection{La décomposition / fusion}
 		L'approche de décomposition / fusion est l'opposée de la croissance de région. Initialement, on crée une unique région englobant toute l'image. L'homogénéité est alors évaluée ; si le critère d'homogénéité n'est pas satisfait, la région est alors décomposée. Cette étape est répétée plusieurs fois, de telle manière que l'image soit découpée en une multitude de régions. L'autre étape importante de cet algorithme est l'étape de fusion. On cherche des couples de régions candidates à une fusion et on les note en fonction de l'impact que cette fusion aurait sur l'image. On fusionne alors les couples de régions les mieux notés, et on réitère jusqu’à ce que les caractéristiques de l'image remplissent une condition prédéfinie : nombre de régions, luminosité, contraste ou texture générale donnée, ou alors jusqu’à ce que les meilleures notes attribuées aux couples de régions n'atteignent plus un certain seuil.
+
+\subsection{La segmentation par classification ou seuillage}
+	\subsubsection{Segmentation par seuillage}
+		La segmentation par seuillage est la méthode de segmentation d'image la plus simple. Cette méthode repose sur le choix de plusieurs valeurs seuils qui seront utilisées pour assigner une classe à un pixel de l'image. Le défi est donc de trouver ces valeurs seuils. Plusieurs méthodes peuvent être utilisées : maximiser l'entropie, la méthode d'Otsu (du maximum de variance)\dots
+
+	\subsubsection{Segmentation par classification}
+		L'algorithme le plus simple pour effectuer de la classification sur une image est l'algorithme des K-moyennes. Son inconvénient est qu'il faut connaître le nombre de clusters $K$ qui indique le nombre de partitions de l'image. L'algorithme est le suivant :
+		\vspace{10px}
+		\begin{enumerate}
+			\item Choisir $K$ clusters, soit aléatoirement ou à l'aide d'une heuristique ;
+			\item Assigner chaque pixel de l'image au cluster qui minimise la distance entre le pixel et le centre du cluster ;
+			\item Recalculer les centres de chaque cluster en faisant une moyenne sur chacun des pixels présents dans le cluster ;
+			\item Répéter les étapes 2 et 3 jusqu'à la convergence, c'est-à-dire quand aucun pixel n'a changé de cluster.
+		\end{enumerate}
+		\vspace{20px}
+		La distance est le carré ou la valeur absolue de la différence entre un pixel et le centre d'un cluster. La différence est ordinairement basée sur la couleur du pixel, son intensité, sa texture, sa localisation ou une combinaison pondérée de ces facteurs. Cet algorithme convergera de manière certaine, mais ne garantit pas une solution optimale. L'obtention d'une solution optimale dépend du nombre de clusters et de l'initialisation des clusters.
