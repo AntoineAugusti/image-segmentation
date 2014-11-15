@@ -1,0 +1,72 @@
+\documentclass[12pt,titlepage,a4paper]{report}
+
+% Texte
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[babel=true]{csquotes}
+\usepackage{lmodern}
+\usepackage{minted}
+\usemintedstyle{trac}
+
+% Numéroter les chapitres a partir de chaque début de partie
+\makeatletter\@addtoreset{chapter}{part}\makeatother
+
+% Mise en page
+\usepackage{url}
+\usepackage[top=2.1cm,bottom=2cm,left=1cm,right=1cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=false,
+    pdfborder={0 0 0},
+}
+\usepackage{multirow}
+
+% TOC
+\usepackage[french]{minitoc}
+\setcounter{tocdepth}{2}
+\setcounter{minitocdepth}{3}
+\setlength{\mtcindent}{0pt}
+
+% Images
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+% Pour inclure des pages PDF
+\usepackage[final]{pdfpages}
+
+% Couverture
+\usepackage{templateINSA}
+\initINSA
+
+% Citations
+\usepackage{epigraph}
+\setlength\epigraphwidth{12cm}
+\setlength\epigraphrule{0pt}
+
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+\makeatother
+
+\usepackage[nottoc, notlof, notlot]{tocbibind}
+
+\title{Segmentation d'image à l'aide de statistiques et d'information spatiales}
+\author{Manon \bsc{Ansart}\\Antoine \bsc{Augusti}}
+
+\renewcommand\soustitre{Analyse d'article scientifique}
+\renewcommand\infoBig{TIM}
+\renewcommand\infoSmall{ASI4 2014-2015}
+\newcommand\bddGraphe{base de données orientée graphe}
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
+%% -- Document
+\begin{document}
+	\titleINSA{15}{images/lena.png}{0}{0}{300}{}{}
+	\dominitoc
+	\tableofcontents
+
+\end{document}
