@@ -1,0 +1,25 @@
+La première étape de l'algorithme de ségmentation d'image est un lissage effectué à l'aide d'un quadtree. Nous allons d'abord voir comment un quadtree peut être utilisé dans ce contexte puis comment le lissage est effectué.
+
+\subsection{Utilisation d'un quadtree}
+	Afin de former notre quadtree, nous allon commencer par créer le niveau k = 0 de l'abre, c'est à dire les feuilles. Ce niveau va contenir tous les pixels de l'image, chaque valeur étant stockée dans un des noeuds. Puis on forme les niveaux supérieurs en faisant la moyenne des noeuds par groupe de 4. Chaque noeud n'étant pas une feuille a donc pour la valeur la moyenne de ses quatre fils. Chaque niveau de l'arbre donne donc une nouvelle image lissée
+
+	Prenons une image de taille $N$ x $N$, avec $N=2^m$. On note $d(i,j)$ le pixel de coordonnées $(i,j)$ de l'image, $i$ et $j$ étant compris entre 0 et $N$. On note $q(i,j,k)$ le noeud de l'arbre correspondant au pixel de coordonnée $(i,j)$ de l'image au niveau $k$ de l'arbre, $i$ et $j$ étant compris entre 0 et $2^{m-k}$ et $k$ entre 0 et $m$.
+
+	Le rang $k=0$ correspond simplement aux données, on a donc \[q(i,j,0) = d(i,j)\]
+
+	Puis chaque noeud a pour valeurs la moyenne de ses quatre fils, donc pour $k > 0$,
+	\[ q(i,j,k) = \frac{q(2i, 2j, k-1) + q(2i+1, 2j, k-1) + q(2i, 2j+1, k-1) + q(2i+1, 2j+1, k-1)}{4}\]
+
+	% petit schéma montrant quel noeud de l'arbre correspond à quel pixel et la réduction de la taille de l'image
+
+	On remarque que plus k augmente et plus l'image est lisse (un pixel a pour valeur la moyenne de 4 autres) et de petite taille. Il nous suffit dont de prendre un niveau de l'arbre pour avoir une image lisse. La question reste de determiner le niveau optimale $m'$ pour lequel le lissage est suffisant sans pour autant que l'image soit trop dégradée pour effectuer les étapes suivantes de segmentation. Dans la partie suivant nous verrons comment determiner ce niveau $m'$.
+
+\subsection{Determination du niveau optimale}
+	Afin de trouver le niveau de lissage maximum $m'$ pour lequel on peut toujours effectuer la segmentation, on pose $r = 2^n$, le rayon minimale des régions que l'on souhaite détecter et qui doit être fixé à priori.
+
+	En coupant le quadtree au niveau $m'$, on pourra detecter toutes les régions de rayon supérieur à $2^{m'+1}$. Pour detecter les régions de rayon $r=2^n$, on veut donc 
+	\[ 2^{m'+1} \leq 2^n \]
+	\[ m'+1 \leq n \]
+	\[ m' \leq n-1 \]
+
+	On cherche à lisser notre image le plus possible tout en gardant une résolution suffisante pour detecter les régions de rayon $r$, on veut donc maximiser $m'$ tout en respectant $m' \leq n-1$, on a donc $m' = n-1$.
