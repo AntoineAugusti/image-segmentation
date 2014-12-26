@@ -1,0 +1,17 @@
+\subsection{Algorithme du barycentre local}
+	Une fois le niveau de lissage déterminé dans le quadtree, il faut classifier les différents pixels de l'image dans plusieurs régions. L'algorithme utilisé est celui du barycentre local (en anglais \textit{local centroid algorithm}). L'utilisation de cet algorithme ne requiert pas la connaissance du nombre de régions \textit{a priori}, contrairement par exemple à celui des K-moyennes (cf. partie \ref{subsubsec:segmentationClassification}). C'est un processus itératif qui se base sur l'histogramme de l'image et le niveau des gris des pixels environnants.\\
+
+	L'algorithme peut-être défini à l'aide de cette procédure itérative :\\
+	\[ h^n(i) = \sum_{j \in \Lambda^n(i)}^{} h^{n-1}(j) \mbox{ et } h^0(i) = h(i) \]
+	\[\mbox{où } j \in \Lambda^n(i) \mbox{ si et seulement si } i = Ent[\frac{\sum\limits_{k=-m}^{m} kh( j + k)}{\sum\limits_{k=-m}^{m} h(j + k)}] \]
+
+	Ces équations traduisent la recherche d'un centre de gravité dans une fenêtre de taille $2m + 1$.
+
+\subsection{Convergence de l'algorithme}
+	Il est difficile de démontrer théoriquement la convergence de l'algorithme, mais en pratique il a été observé que celui-ci converge rapidement, typiquement entre 10 et 20 itérations. Le nombre de classes dépend de la taille de la fenêtre et de l'importance des pics dans l'histogramme de l'image $h(i)$.
+
+\subsection{Taille de fenêtre}
+	La taille de la fenêtre est déterminée à l'aide d'un processus itératif. Cette taille est augmentée de 5 jusqu'à ce que plusieurs essais produisent des résultats similaires.
+
+\subsection{Classification}
+	La classification est effectuée une fois que l'algorithme du barycentre local a convergé. Pour chaque $i$, on cherche sa dernière valeur $i_n$ telle que $i_{k-1} \in \Lambda^k (i_k) \mbox{ avec } 1 \leq k \leq n \mbox{ et } i_0 = i$.
