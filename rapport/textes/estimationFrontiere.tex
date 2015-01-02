@@ -13,7 +13,7 @@ Cette partie de l'algorithme a pour but de redéfinir les classes des pixels pro
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.75]{images/bordure.jpg}
-		\caption{Frontière en ligne droite entre 2 classes}
+		\caption{Frontière en ligne droite entre 2 classes.}
 		\label{fig:bordure}
 	\end{figure}
 
@@ -21,7 +21,7 @@ Cette partie de l'algorithme a pour but de redéfinir les classes des pixels pro
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.75]{images/bordure-2.jpg}
-		\caption{Frontière en ligne droite entre 2 classes avec apparition de la première bordure}
+		\caption{Frontière en ligne droite entre 2 classes avec apparition de la première bordure.}
 		\label{fig:bordure2}
 	\end{figure}
 
@@ -39,7 +39,7 @@ Cette partie de l'algorithme a pour but de redéfinir les classes des pixels pro
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.75]{images/bordure-3.jpg}
-		\caption{Frontière en ligne droite entre 2 classes avec union des bordures}
+		\caption{Frontière en ligne droite entre 2 classes avec union des bordures.}
 		\label{fig:bordure3}
 	\end{figure}
 
@@ -47,7 +47,7 @@ Cette partie de l'algorithme a pour but de redéfinir les classes des pixels pro
 	Maintenant que nous connaissons les pixels appartenant à la frontière $B_c(k)$, nous allons les lisser grâce à une filtre linéaire. Nous allons maintenant définir le filtre linéaire utilisé.
 	On note $\hat{\mu}_1$ et $\hat{\mu}_2$ les moyennes des deux classes que la frontière sépare et $\hat{\mu}(i,j,k)$ la moyenne de la classe associée au pixel $(i,j,k)$.\\
 
-	Soit $B_c'(k)$ l'ensemble des pixels n'appartenant pas à la frontière.On définit :
+	Soit $B_c'(k)$ l'ensemble des pixels n'appartenant pas à la frontière. On définit :
 
 	\[ \hat{\sigma}_k^2 = \frac{\sum\limits_{(i,j) \in B_c'(k)}[q(i,j,k)-\hat{\mu}(i,j,k)]^2}{N(B_c'(k))} \]
 
