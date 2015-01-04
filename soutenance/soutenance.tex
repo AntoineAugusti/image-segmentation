@@ -129,10 +129,10 @@
 			\frametitle{Classification statistique}
 				\begin{itemize}
 					\item Utilisation de l'algorithme du barycentre local ;
-					\item Pas de connaissance à priori du nombre de régions ;
+					\item Pas de connaissance a priori du nombre de régions ;
 					\item Seul paramètre : taille de la fenêtre. Peut être supprimé grâce à un processus itératif ;
 					\item Classification effectuée une fois que l’algorithme du barycentre local a convergé.
-				\end{itemize}		
+				\end{itemize}
 		\end{frame}
 
 		%% Estimation de la frontière
@@ -140,7 +140,7 @@
 		\begin{frame}
 			\frametitle{Estimation de la frontière}
 				\begin{itemize}
-					\item Identification de la frontière : Les noeuds dont un voisin est d'une classe différente appatiennent à $B$, les noeuds dont un voisin appartient à $B$ appartiennent à $B_1$ ;
+					\item Identification de la frontière : Les nœuds dont un voisin est d'une classe différente appartiennent à $B$, les nœuds dont un voisin appartient à $B$ appartiennent à $B_1$ ;
 					\begin{figure}[H]
 						\centering
 						\includegraphics[scale=0.19]{images/bordure-3.jpg}
@@ -150,7 +150,7 @@
 					\item Lissage de la frontière avec un filtre linéaire;
 					\item Réaffectation de la classe ayant la moyenne la plus proche aux pixels de la frontière;
 					\item Répétition à tous les niveaux du quadtree.
-				\end{itemize}		
+				\end{itemize}
 		\end{frame}
 
 	% //////////////////////////////// %
@@ -159,14 +159,11 @@
 
 		\begin{frame}
 			\frametitle{Conclusion}
-			Les méthodes de semgentation statistique et spatiale décrites en introduction prennent en compte différents paramètres et se complètent. La spécificité de l'algorithme présenté est qu'il combine les deux techniques : 
+			Les méthodes de segmentation statistique et spatiale décrites en introduction prennent en compte différents paramètres et se complètent. La spécificité de l'algorithme présenté est qu'il combine les deux techniques :
 			\begin{itemize}
-				\item Approche statistique : classification à l'aide de l'aglorithme du barycentre local ;
+				\item Approche statistique : classification à l'aide de l’algorithme du barycentre local ;
 				\item Approche spatiale : Travail sur la frontière avec d'identification et le filtre.
 			\end{itemize}
-
-
 		\end{frame}
-
 
 \end{document}
