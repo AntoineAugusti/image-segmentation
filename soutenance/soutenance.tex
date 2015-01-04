@@ -123,4 +123,44 @@
 				\end{equation*}
 		\end{frame}
 
+		%% Classification statistique
+		\subsection{Classification statistique}
+		\begin{frame}
+			\frametitle{Classification statistique}
+				\begin{itemize}
+					\item Utilisation de l'algorithme du barycentre local ;
+					\item Pas de connaissance à priori du nombre de régions ;
+					\item Seul paramètre : taille de la fenêtre. Peut être supprimé grâce à un processus itératif ;
+					\item Classification effectuée une fois que l’algorithme du barycentre local a convergé.
+				\end{itemize}		
+		\end{frame}
+
+		%% Estimation de la frontière
+		\subsection{Estimation de la frontière}
+		\begin{frame}
+			\frametitle{Estimation de la frontière}
+				\begin{itemize}
+					\item Identification de la frontière : Les noeuds dont un voisin est d'une classe différente appatiennent à $B$, les noeuds dont un voisin appartient à $B$ appartiennent à $B_1$ ;
+					\begin{figure}[H]
+						\centering
+						\includegraphics[scale=0.19]{images/bordure-3.jpg}
+						\caption{Identification de la frontière sur une ligne droite.}
+						\label{fig:quadtree2}
+					\end{figure}
+					\item Lissage de la frontière avec un filtre linéaire;
+					\item Réaffectation de la classe ayant la moyenne la plus proche aux pixels de la frontière;
+					\item Répétition à tous les niveaux du quadtree.
+				\end{itemize}		
+		\end{frame}
+
+	% //////////////////////////////// %
+	% /// Conclusion //////////// %
+	\section{Conclusion}
+
+		\begin{frame}
+			\frametitle{Conclusion}
+
+		\end{frame}
+
+
 \end{document}
