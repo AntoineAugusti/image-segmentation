@@ -100,4 +100,27 @@
 			\end{figure}
 		\end{frame}
 
+		%% Le lissage
+		\subsection{Le lissage}
+		\begin{frame}
+			\frametitle{Le lissage}
+				\begin{itemize}
+					\item Utilisation d'un quadtree pour lisser l'image. Quand le rang du quadtree augmente, l'image est lissée (chaque pixel a pour valeur la moyenne de 4 autres) ;
+					\item Recherche d'un niveau optimal $m'$ pour lequel le lissage est suffisant pour effectuer la segmentation.
+				\end{itemize}
+
+				On veut trouver les régions de rayon minimal $r = 2^n$, tout en lissant l'image le plus possible, c-à-d en maximisant $m'$.
+
+				\[2^{m' + 1} \leq 2^n \Leftrightarrow m'+1 \leq n \Leftrightarrow m' \leq n - 1\]
+				On obtient le problème d'optimisation :
+				\begin{equation*}
+				\begin{aligned}
+					& \underset{m' \in\; [0; n]}{\text{max}}
+					& & m' \\
+					& \text{Sous contrainte}
+					& & m' \leq n - 1
+					\end{aligned}
+				\end{equation*}
+		\end{frame}
+
 \end{document}
