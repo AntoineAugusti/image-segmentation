@@ -1,0 +1,84 @@
+% L'option handout permet de supprimer la barre de navigation
+\documentclass[handout]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+% Pour pouvoir insérer des images
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\graphicspath{images/}
+% Gestion des couleurs
+\usepackage{color}
+\definecolor{red}{RGB}{231, 76, 60}
+
+% Un joli thème flat
+\usetheme{Rochester}
+
+% Personnalisation du thème
+\usecolortheme[named=red]{structure}
+% Numéro de slides dans le footer
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{blocks}[shadow=false]
+
+% ------------------------------------ %
+% -- METADONNÉES DU DOCUMENT --------- %
+\title{
+	A quad-tree approach to image segmentation which combines statistical and spatial information
+}
+\author{
+	Manon \textsc{Ansart} \\
+	\vspace{5px}
+	Antoine \textsc{Augusti}
+}
+\date{7 janvier 2015}
+
+% Générer une page de titre à chaque début de section
+\AtBeginSection[]
+{
+	\begin{frame}[plain]
+	\frametitle{Sommaire}
+	\tableofcontents[currentsection, hideothersubsections]
+	\end{frame}
+}
+
+% Début du document
+\begin{document}
+
+	% Génération de la page de titre
+	\begin{frame}[plain]
+		\titlepage
+	\end{frame}
+
+	% Génération du sommaire
+	\begin{frame}[plain]
+		\frametitle{Sommaire}
+		\tableofcontents
+	\end{frame}
+
+
+	% //////////////////////////////// %
+	% /// La segmentation //////////// %
+	\section{La segmentation}
+
+		%% Principe général
+		\subsection{Principe général}
+		\begin{frame}
+			\frametitle{Principe général}
+
+			La segmentation est une opération qui a pour but de rassembler des pixels entre eux suivant des critères pré-définis.\\
+			\vspace{10px}
+			\textbf{Segmentation statistique}
+			\begin{itemize}
+				\item Par seuillage : choix de plusieurs seuils pour assigner une classe à chaque pixel. Maximisation de l'entropie, méthode d'Otsu\dots
+				\item Par classification : algorithme des K-moyennes par exemple.
+			\end{itemize}
+
+			\vspace{10px}
+			\textbf{Segmentation spatiale}
+			\begin{itemize}
+				\item Approche par croissance de région ou par décomposition / fusion.
+			\end{itemize}
+
+		\end{frame}
+\end{document}
